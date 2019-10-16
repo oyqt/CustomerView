@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:background="#dddddd"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <!--    <com.example.testcustomerview.clock.ClockView-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_gravity="center" />-->
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <androidx.appcompat.widget.AppCompatSeekBar
+            android:id="@+id/seekBar"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:max="100"
+            android:progress="0" />
+
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:paddingTop="16dp"
+        android:paddingBottom="16dp">
+
+        <com.example.testcustomerview.record.RecordView
+            android:id="@+id/recordView"
+            android:layout_width="104dp"
+            android:layout_height="104dp"
+            android:layout_gravity="center"
+            app:drawTxt="0%"
+            app:drawTxtColor="@color/colorPrimary"
+            app:drawTxtSize="14sp"
+            app:innerRoundColor="@color/white"
+            app:maxDuration="20000"
+            app:outerRoundColor="@color/grey"
+            app:strokeColor="@color/colorPrimary"
+            app:strokeWidth="12dp" />
+    </LinearLayout>
+</LinearLayout>
