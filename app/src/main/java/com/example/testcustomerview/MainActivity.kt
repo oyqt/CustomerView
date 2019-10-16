@@ -1,5 +1,6 @@
 package com.example.testcustomerview
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatSeekBar
 
@@ -8,46 +9,33 @@ import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewTreeObserver
+import android.widget.Button
 import android.widget.SeekBar
+import com.example.testcustomerview.clock.ClockActivity
+import com.example.testcustomerview.record.RecordActivity
 
 import com.example.testcustomerview.record.RecordView
+import com.example.testcustomerview.rotate.RotateActivity
 
 class MainActivity : AppCompatActivity() {
-
-    private val mSeekBar: AppCompatSeekBar by lazy { findViewById<AppCompatSeekBar>(R.id.seekBar) }
-    private val mRecordView: RecordView by lazy { findViewById<RecordView>(R.id.recordView) }
+    private val mBtnClock: Button by lazy { findViewById<Button>(R.id.btn_clock) }
+    private val mBtnRecord: Button by lazy { findViewById<Button>(R.id.btn_record) }
+    private val mBtnRotate: Button by lazy { findViewById<Button>(R.id.btn_rotate) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        mSeekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
-            override fun onProgressChanged(seekBar: SeekBar, i: Int, b: Boolean) {
-                mRecordView.setCurProgress(i)
-            }
+        mBtnClock.setOnClickListener {
+            startActivity(Intent(this, ClockActivity::class.java))
+        }
 
-            override fun onStartTrackingTouch(seekBar: SeekBar) {
+        mBtnRecord.setOnClickListener {
+            startActivity(Intent(this, RecordActivity::class.java))
+        }
 
-            }
-
-            override fun onStopTrackingTouch(seekBar: SeekBar) {
-
-            }
-        })
-
-        mRecordView.setOnCusTouchListener(object : RecordView.OnCusTouchListener {
-            override fun onTouchLongPress() {
-                Log.i("asda", "长按")
-            }
-
-            override fun onCancelTouchLongPress() {
-                Log.i("asda", "取消长按")
-            }
-
-            override fun onTouchClick() {
-                Log.i("asda", "点击")
-            }
-
-        })
+        mBtnRotate.setOnClickListener {
+            startActivity(Intent(this, RotateActivity::class.java))
+        }
     }
 }
