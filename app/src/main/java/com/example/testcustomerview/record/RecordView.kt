@@ -102,6 +102,7 @@ class RecordView : View {
 
             override fun onTick(millisUntilFinished: Long) {
                 mCurProgress = (360f - (millisUntilFinished / mDrawDuration.toFloat()) * 360f).toInt()
+                mDrawTxt = "${(mCurProgress / 360F * 100F).toInt()}%"
                 invalidate()
             }
         }
@@ -199,7 +200,7 @@ class RecordView : View {
         mPaint.strokeWidth = mStrokeWidth
         mPaint.strokeCap = Paint.Cap.ROUND
         mRectF.set(mStrokeWidth / 2, mStrokeWidth / 2, mOutWidth - mStrokeWidth / 2, mOutWidth - mStrokeWidth / 2)
-        canvas?.drawArc(mRectF, 0F, mCurProgress.toFloat(), false, mPaint)
+        canvas?.drawArc(mRectF, -90F, mCurProgress.toFloat(), false, mPaint)
 
         // 中间文字
         mTxtPaint.color = mDrawTxtColor
